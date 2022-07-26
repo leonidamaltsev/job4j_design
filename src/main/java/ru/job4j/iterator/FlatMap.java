@@ -5,11 +5,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-public class FlatMap implements Iterator<Integer> {
-    private final Iterator<Iterator<Integer>> data;
-    private Iterator<Integer> cursor = Collections.emptyIterator();
+public class FlatMap<T> implements Iterator<T> {
+    private final Iterator<Iterator<T>> data;
+    private Iterator<T> cursor = Collections.emptyIterator();
 
-    public FlatMap(Iterator<Iterator<Integer>> data) {
+    public FlatMap(Iterator<Iterator<T>> data) {
         this.data = data;
     }
 
@@ -22,7 +22,7 @@ public class FlatMap implements Iterator<Integer> {
     }
 
     @Override
-    public Integer next() {
+    public T next() {
         if (!hasNext()) {
             throw new NoSuchElementException();
         }

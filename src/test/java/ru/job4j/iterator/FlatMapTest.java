@@ -11,7 +11,7 @@ class FlatMapTest {
                 List.of(1).iterator(),
                 List.of(2, 3).iterator()
         ).iterator();
-        FlatMap flat = new FlatMap(data);
+        FlatMap<Integer> flat = new FlatMap<>(data);
         assertThat(flat.next()).isEqualTo(1);
         assertThat(flat.next()).isEqualTo(2);
         assertThat(flat.next()).isEqualTo(3);
@@ -22,7 +22,7 @@ class FlatMapTest {
         Iterator<Iterator<Integer>> data = List.of(
                 List.of(1, 2, 3).iterator()
         ).iterator();
-        FlatMap flat = new FlatMap(data);
+        FlatMap<Integer> flat = new FlatMap<>(data);
         assertThat(flat.next()).isEqualTo(1);
         assertThat(flat.next()).isEqualTo(2);
         assertThat(flat.next()).isEqualTo(3);
@@ -33,7 +33,7 @@ class FlatMapTest {
         Iterator<Iterator<Integer>> data = List.of(
                 List.of(1).iterator()
         ).iterator();
-        FlatMap flat = new FlatMap(data);
+        FlatMap<Integer> flat = new FlatMap<>(data);
         assertThat(flat.hasNext()).isTrue();
         assertThat(flat.hasNext()).isTrue();
     }
@@ -43,7 +43,7 @@ class FlatMapTest {
         Iterator<Iterator<Integer>> data = List.of(
                 List.of(1).iterator()
         ).iterator();
-        FlatMap flat = new FlatMap(data);
+        FlatMap<Integer> flat = new FlatMap<>(data);
         assertThat(flat.next()).isEqualTo(1);
         assertThat(flat.hasNext()).isFalse();
     }
@@ -53,7 +53,7 @@ class FlatMapTest {
         Iterator<Iterator<Object>> data = List.of(
                 Collections.emptyIterator()
         ).iterator();
-        FlatMap flat = new FlatMap(data);
+        FlatMap<Object> flat = new FlatMap<>(data);
         assertThatThrownBy(flat::next)
                 .isInstanceOf(NoSuchElementException.class);
     }
@@ -64,7 +64,7 @@ class FlatMapTest {
         Iterator<Iterator<Integer>> data = List.of(
                 empty
         ).iterator();
-        FlatMap flat = new FlatMap(data);
+        FlatMap<Integer> flat = new FlatMap<>(data);
         assertThatThrownBy(flat::next)
                 .isInstanceOf(NoSuchElementException.class);
     }
@@ -78,7 +78,7 @@ class FlatMapTest {
                 empty,
                 List.of(1).iterator()
         ).iterator();
-        FlatMap flat = new FlatMap(data);
+        FlatMap<Integer> flat = new FlatMap<>(data);
         assertThat(flat.hasNext()).isTrue();
         assertThat(flat.next()).isEqualTo(1);
     }
@@ -91,7 +91,7 @@ class FlatMapTest {
                 empty,
                 empty
         ).iterator();
-        FlatMap flat = new FlatMap(data);
+        FlatMap<Integer> flat = new FlatMap<>(data);
         assertThat(flat.hasNext()).isFalse();
     }
 }
