@@ -13,6 +13,6 @@ public class SimpleStack<T> {
     }
 
     public boolean isEmpty() {
-        return !linked.iterator().hasNext();
+        return linked.isEmpty();
     }
 }

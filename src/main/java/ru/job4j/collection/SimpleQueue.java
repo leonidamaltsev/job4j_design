@@ -7,10 +7,8 @@ public class SimpleQueue<T> {
     private final SimpleStack<T> in = new SimpleStack<>();
     private final SimpleStack<T> out = new SimpleStack<>();
 
-    private int size;
-
     public T poll() {
-        if (size == 0) {
+        if (in.isEmpty() && out.isEmpty()) {
             throw new NoSuchElementException();
         }
 
@@ -24,6 +22,5 @@ public class SimpleQueue<T> {
 
     public void push(T value) {
         in.push(value);
-        size++;
     }
 }
