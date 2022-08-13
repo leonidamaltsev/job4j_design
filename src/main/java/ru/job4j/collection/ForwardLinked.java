@@ -2,9 +2,11 @@ package ru.job4j.collection;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+
 public class ForwardLinked<T> implements Iterable<T> {
 
     private Node<T> head;
+    private Node<T> tail;
 
     public void add(T value) {
         Node<T> node = new Node<>(value, null);
@@ -36,18 +38,24 @@ public class ForwardLinked<T> implements Iterable<T> {
     }
 
     public boolean revert() {
-        if (head != null && head.next != null) {
-            Node<T> currentNode = head.next;
-            head.next = null;
-            while (currentNode != null) {
-                Node<T> nextNode = currentNode.next;
-                currentNode.next = head;
-                head = currentNode;
-                currentNode = nextNode;
+
+        boolean rsl;
+        if (isEmpty() || head.next == null) {
+            rsl = false;
+        } else {
+            Node<T> next;
+            Node<T> current = head;
+            Node<T> previous = null;
+            while (current != null) {
+                next = current.next;
+                current.next = previous;
+                previous = current;
+                current = next;
             }
-            return true;
+            head = previous;
+            rsl = true;
         }
-        return false;
+        return rsl;
     }
 
     @Override
