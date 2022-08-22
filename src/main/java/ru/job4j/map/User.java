@@ -37,18 +37,6 @@ public class User {
                 hashCode2, hash2, bucket2, index2);
         System.out.println(user1.equals(user2));
     }
-    /*
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof User)) {
-            return false;
-        }
-        User user = (User) obj;
-        return children == user.children && Objects.equals(name, user.name) && Objects.equals(birthday, user.birthday);
-    }*/
 
     @Override
     public int hashCode() {
