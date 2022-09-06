@@ -32,7 +32,7 @@ public class SimpleMap<K, V> implements Map<K, V> {
     }
 
     private int hash(int hashCode) {
-        return (hashCode == 0) ? 0 : (hashCode ^ (hashCode >>> capacity));
+        return (hashCode == 0) ? 0 : (hashCode ^ (hashCode >>> 16));
     }
 
     private int indexFor(int hash) {
@@ -68,7 +68,7 @@ public class SimpleMap<K, V> implements Map<K, V> {
         boolean result = false;
         int index = indexFor(hash(Objects.hashCode(key)));
         K nextKey = table[index] != null ? table[index].key : null;
-        if (hash(Objects.hashCode(key)) == hash(Objects.hashCode(nextKey)) & Objects.equals(key, nextKey)) {
+        if (hash(Objects.hashCode(key)) == hash(Objects.hashCode(nextKey)) && Objects.equals(key, nextKey)) {
             table[index] = null;
             result = true;
             count--;
