@@ -23,21 +23,21 @@ class NameLoadTest {
     }
 
     @Test
-    void NameDoesNotContainsEqualsSymbol() {
+    void whenNameDoesNotContainsEqualsSymbol() {
         assertThatThrownBy(() -> nameLoad.parse("name-Ivan"))
                 .hasMessageContaining("does not contain the symbol")
                 .hasMessageContaining("Ivan");
     }
 
     @Test
-    void NameDoesNotContainsKey() {
+    void whenNameDoesNotContainsKey() {
         assertThatThrownBy(() -> nameLoad.parse("=Ivan"))
                 .hasMessageContaining("does not contain a key")
                 .hasMessageContaining("=Ivan");
     }
 
     @Test
-    void NameDoesNotContainsValue() {
+    void whenNameDoesNotContainsValue() {
         assertThatThrownBy(() -> nameLoad.parse("name="))
                 .hasMessageContaining("this name: name= does not contain a value");
     }
