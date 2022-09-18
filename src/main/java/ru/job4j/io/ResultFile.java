@@ -1,6 +1,8 @@
 package ru.job4j.io;
 
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 public class ResultFile {
@@ -17,12 +19,9 @@ public class ResultFile {
 
     public static void main(String[] args) {
         try (FileOutputStream out = new FileOutputStream("multiple.txt")) {
-            int[][] str = multiple(9);
-            for (int[] multiple : str) {
-                out.write(Arrays.toString(multiple).getBytes());
-                out.write(System.lineSeparator().getBytes());
-            }
-        } catch (Exception e) {
+            out.write(Arrays.deepToString(ResultFile.multiple(4)).getBytes());
+            out.write(System.lineSeparator().getBytes());
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
