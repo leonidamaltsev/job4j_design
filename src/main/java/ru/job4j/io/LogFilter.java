@@ -5,18 +5,15 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LogFilter {
     public List<String> filter(String file) {
         List<String> rsl = new ArrayList<>();
         try (BufferedReader in = new BufferedReader(new FileReader(file))) {
-            for (String line = in.readLine(); line != null; line = in.readLine()) {
-                String[] lines = line.split(" ");
-                if (lines[lines.length - 2].equals("404")
-                        && ("404").equals(lines[lines.length - 2])) {
-                    rsl.add(line);
-                }
-            }
+            rsl = in.lines()
+                    .filter(n -> n.contains(" 404 "))
+                    .collect(Collectors.toList());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -26,8 +23,6 @@ public class LogFilter {
     public static void main(String[] args) {
         LogFilter logFilter = new LogFilter();
         List<String> log = logFilter.filter("log.txt");
-        for (String el : log) {
-            System.out.println(log);
-        }
+        System.out.println(log);
     }
 }
