@@ -24,7 +24,7 @@ public class Config {
                 if (!str.isEmpty() && !str.startsWith("#")) {
                     int rsl = str.indexOf("=");
                     if (rsl <= 0 || rsl == str.length() - 1) {
-                        throw new IllegalArgumentException();
+                        throw new IllegalArgumentException("Нарушение шаблона в строке" + str);
                     }
                     String key = str.substring(0, rsl);
                     String value = str.substring(rsl + 1);
