@@ -1,8 +1,6 @@
 package ru.job4j.io;
 
 import java.io.*;
-import java.util.List;
-
 
 public class Analizy {
     /**
@@ -16,9 +14,8 @@ public class Analizy {
     public void unavailable(String source, String target) {
         try (BufferedReader read = new BufferedReader(new FileReader(source))) {
             PrintWriter out = new PrintWriter(new FileOutputStream(target));
-            List<String> lines = read.lines().toList();
             boolean startWrite = false;
-            for (String line : lines) {
+            for (String line : read.lines().toList()) {
                 boolean isAvailable = line.startsWith("200") || line.startsWith("300");
                 if (!isAvailable && !startWrite) {
                     out.write(String.format("%s;", line.split(" ")[1]));
