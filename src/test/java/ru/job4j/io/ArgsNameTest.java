@@ -51,4 +51,9 @@ class ArgsNameTest {
         assertThatThrownBy(() -> ArgsName.of(new String[]{"encoding=UTF-8"}))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+    @Test
+    void whenNotValue() {
+        assertThatThrownBy(() ->ArgsName.of(new String[]{"-Xmx="}))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }

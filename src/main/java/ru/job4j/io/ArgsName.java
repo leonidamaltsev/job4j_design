@@ -33,15 +33,20 @@ public class ArgsName {
             throw new IllegalArgumentException(
                     String.format("Incorrect argument: '%s' should starts with '-' sign.", arg));
         }
-        if (arg.startsWith("-=")) {
-            throw new IllegalArgumentException(
-                    String.format("Incorrect argument: '%s' should contains a key.", arg));
-        }
         if (!arg.contains("=")) {
             throw new IllegalArgumentException(
                     String.format("Incorrect argument: '%s' should contains an '=' sign.", arg));
         }
+        if (arg.startsWith("-=")) {
+            throw new IllegalArgumentException(
+                String.format("Incorrect argument: '%s' should contains a key.", arg));
+        }
+        if (arg.endsWith("=") && arg.split("=").length == 1) {
+            throw new IllegalArgumentException(
+                    String.format("Incorrect argument: '%s' should contains a value.", arg));
+        }
     }
+
 
     public static ArgsName of(String[] args) {
         ArgsName names = new ArgsName();
