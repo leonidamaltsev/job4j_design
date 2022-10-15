@@ -53,7 +53,7 @@ class ArgsNameTest {
     }
     @Test
     void whenNotValue() {
-        assertThatThrownBy(() ->ArgsName.of(new String[]{"-Xmx="}))
+        assertThatThrownBy(() -> ArgsName.of(new String[]{"-Xmx="}))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
