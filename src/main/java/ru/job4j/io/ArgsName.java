@@ -6,6 +6,10 @@ import java.util.Map;
 public class ArgsName {
     /**
      * Программа принимает массив параметров и разбивает их на пары: ключ, значение
+     * в методе validate происходит проверка на отсутствие символа "-" "ключ=значение",
+     * на отсутствие символа "=" "-ключ:значение",
+     * на отсутствие ключа "-=значение",
+     * на отсутствие значения "-ключ=".
      */
 
     private final Map<String, String> values = new HashMap<>();
@@ -41,7 +45,7 @@ public class ArgsName {
             throw new IllegalArgumentException(
                 String.format("Incorrect argument: '%s' should contains a key.", arg));
         }
-        if (arg.endsWith("=") && arg.split("=").length == 1) {
+        if (arg.indexOf("=") == arg.length() - 1) {
             throw new IllegalArgumentException(
                     String.format("Incorrect argument: '%s' should contains a value.", arg));
         }
