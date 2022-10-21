@@ -23,6 +23,7 @@ public class ConsoleChat {
     private final String botAnswers;
     private final List<String> log = new ArrayList<>();
 
+
     public ConsoleChat(String path, String botAnswers) {
         this.path = path;
         this.botAnswers = botAnswers;
@@ -32,6 +33,7 @@ public class ConsoleChat {
         List<String> answers = readPhrases();
         BufferedReader rd = new BufferedReader(new InputStreamReader(System.in));
         boolean check = true;
+        Random random = new Random();
         String s = "";
         System.out.println("Введите фразу");
         while (!OUT.equals(s)) {
@@ -41,7 +43,6 @@ public class ConsoleChat {
                 check = false;
             }
             if (check) {
-                Random random = new Random();
                 String botAnswer = answers.get(random.nextInt(answers.size()));
                 System.out.println(botAnswer);
                 log.add(botAnswer);
