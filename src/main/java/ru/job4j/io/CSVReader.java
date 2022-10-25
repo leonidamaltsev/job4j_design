@@ -43,9 +43,6 @@ public class CSVReader {
     }
 
     private static void validate(ArgsName argsName) {
-        if (Paths.get(argsName.get("path")).toFile().exists()) {
-            throw new IllegalArgumentException("The file does not exist");
-        }
         if (!";".equals(argsName.get("delimiter"))) {
             throw new IllegalArgumentException("The delimiter should be \";\"");
         }
