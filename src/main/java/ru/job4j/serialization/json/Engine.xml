@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <engine enginetype="false" thrust="30">
-    <rocketEngine>="hydrogen"</rocketEngine>
+    <rocketEngine>"hydrogen"</rocketEngine>
     <statuses>
         <status>Saturn</status>
         <status>silver</status>
