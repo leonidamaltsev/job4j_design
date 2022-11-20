@@ -15,6 +15,22 @@ public class Engine {
         this.statuses = statuses;
     }
 
+    public boolean isEnginetype() {
+        return enginetype;
+    }
+
+    public int getThrust() {
+        return thrust;
+    }
+
+    public RocketEngine getRocketEngine() {
+        return rocketEngine;
+    }
+
+    public String[] getStatuses() {
+        return statuses;
+    }
+
     @Override
     public String toString() {
         return "Engine{"

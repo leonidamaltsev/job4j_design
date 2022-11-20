@@ -1,19 +1,29 @@
 package ru.job4j.serialization.json;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+
+        JSONObject jsonFuel = new JSONObject("{\"fuel\":\"hydrogen\"}");
+        List<String> list = new ArrayList<>();
+        list.add("Saturn");
+        list.add("silver");
+        JSONArray jsonStatuses = new JSONArray(list);
+
         final Engine engine = new Engine(false, 30, new RocketEngine("hydrogen"),
                 new String[] {"Saturn", "silver"});
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("enginetype", engine.isEnginetype());
+        jsonObject.put("rocketEngine", engine.getRocketEngine());
+        jsonObject.put("trust", 30);
 
-        final Gson gson = new GsonBuilder().create();
-        String gsonString = gson.toJson(engine);
-        System.out.println(gsonString);
+        System.out.println(jsonObject.toString());
 
-
-        final Engine engineMod = gson.fromJson(gsonString, Engine.class);
-        System.out.println(engineMod);
+        System.out.println(new JSONObject(engine).toString());
     }
 }
