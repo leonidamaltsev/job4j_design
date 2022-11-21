@@ -7,6 +7,10 @@ public class RocketEngine {
         this.fuel = fuel;
     }
 
+    public String getFuel() {
+        return fuel;
+    }
+
     @Override
     public String toString() {
         return "RocketEngine{"

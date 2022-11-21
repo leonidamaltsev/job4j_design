@@ -15,15 +15,18 @@ public class Main {
         list.add("silver");
         JSONArray jsonStatuses = new JSONArray(list);
 
-        final Engine engine = new Engine(false, 30, new RocketEngine("hydrogen"),
+        final Engine engine = new Engine(false, 30,
+                new RocketEngine("hydrogen"),
                 new String[] {"Saturn", "silver"});
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("enginetype", engine.isEnginetype());
+        jsonObject.put("enginеtype", engine.isEnginetype());
         jsonObject.put("rocketEngine", engine.getRocketEngine());
-        jsonObject.put("trust", 30);
+        jsonObject.put("thrust", 30);
+        jsonObject.put("Fuel", jsonFuel);
+        jsonObject.put("Statuses", jsonStatuses);
 
-        System.out.println(jsonObject.toString());
+        System.out.println(jsonObject);
 
-        System.out.println(new JSONObject(engine).toString());
+        System.out.println(new JSONObject(engine));
     }
 }
