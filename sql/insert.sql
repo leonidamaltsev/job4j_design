@@ -26,5 +26,4 @@ insert into item(name, user_id, category_id, state_id) values ('Item two', 1, 1,
 insert into item(name, user_id, category_id, state_id) values ('Item three', 3, 2, 2);
 
 insert into comments(name, item_id) values ('Comment one', 1);
-
 insert into attachs(name, item_id) values ('Attach one', 2);
