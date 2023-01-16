@@ -6,12 +6,13 @@ insert into rules(name) values ('rule one');
 insert into rules(name) values ('rule two');
 insert into rules(name) values ('rule three');
 
-insert into role_rules(role_id, rules_id) values (1, 2);
-insert into role_rules(role_id, rules_id) values (1, 1);
+insert into role_rules(role_id, rules_id) values (3, 3);
+insert into role_rules(role_id, rules_id) values (2, 1);
 insert into role_rules(role_id, rules_id) values (1, 3);
 
 insert into users(name, role_id) values ('Vodokanal', 2);
 insert into users(name, role_id) values ('Energo', 1);
+insert into users(name, role_id) values ('Teplo', 3);
 
 insert into category(name) values ('Category one');
 insert into category(name) values ('Category two');
