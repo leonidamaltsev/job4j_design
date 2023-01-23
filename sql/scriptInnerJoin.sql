@@ -21,7 +21,7 @@ insert into people(name) values ('Sarah');
 insert into people(name) values ('Maria');
 
 select pp.name, lt.seria, lt.number 
-from people as lt join lottery_ticket as lt on pp.lottery_ticket_id = lt.id;
+from people as pp join lottery_ticket as lt on pp.lottery_ticket_id = lt.id;
 
 select pp.name as Имя, lt.seria as Серия, lt.number as Номер 
 from people as pp join lottery_ticket as lt on pp.lottery_ticket_id = lt.id;
