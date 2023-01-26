@@ -13,6 +13,10 @@ create table product
 	price float
 );
 
+insert into type(name) values ('Сыр');
+insert into type(name) values ('Молоко');
+insert into type(name) values ('Мороженное');
+
 insert into product(name, type_id, expired_date, price) values ('Сыр плавленный', 1, '2023-01-25', 250.00);
 insert into product(name, type_id, expired_date, price) values ('Сыр моцарелла', 1, '2023-01-25', 350.00);
 insert into product(name, type_id, expired_date, price) values ('Сыр гройцер', 1, '2024-01-25', 950.00);
@@ -24,11 +28,6 @@ insert into product(name, type_id, expired_date, price) values ('Молоко р
 insert into product(name, type_id, expired_date, price) values ('фруктовое мороженное', 3, '2023-01-25', 55.00);
 insert into product(name, type_id, expired_date, price) values ('мороженное Фисташка', 3, '2023-01-25', 100.00);
 insert into product(name, type_id, expired_date, price) values ('мороженное Лакомка', 3, '2024-01-25', 150.00);
-
-
-insert into type(name) values ('Сыр');
-insert into type(name) values ('Молоко');
-insert into type(name) values ('Мороженное');
 
 select * from product as p
 join type as t
