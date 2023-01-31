@@ -54,7 +54,8 @@ select * from employees e
 left join departments d 
 on e.department_id = d.id;
 
-select * from departments d 
+select e.id, e.name, department_id, d.id, d.name 
+from departments d 
 right join employees e 
 on e.department_id = d.id;
 
@@ -62,10 +63,10 @@ select * from departments d
 left join employees e 
 on d.id = e.department_id;
 
-select * from employees e 
+select d.id, d.name, e.id, e.name, department_id 
+from employees e 
 right join departments d 
 on e.department_id = d.id;
-
 
 create table teens
 (
