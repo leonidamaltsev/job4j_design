@@ -31,9 +31,7 @@ create or replace function tax_row()
     returns trigger as
 $$
     BEGIN
-        update products
-        set price = price + tax
-        where id = new.id;
+        new.price = new.price + tax;
         return NEW;
     END;
 $$
@@ -62,8 +60,7 @@ create or replace function products_history()
 $$
     BEGIN
         insert into history_of_price (name, price, date)
-        values(name = new.name, price = new.price, current_date);
-		where id = new.id;
+        values(new.name, new.price, current_date);		
         return NEW;
     END;
 $$
