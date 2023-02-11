@@ -3,7 +3,7 @@ create table products (
     name varchar(50),
     producer varchar(50),
     count integer default 0,
-    price integer    
+    price integer
 );
 
 insert into products (name, producer, count, price) values ('product_3', 'producer_3', 8, 115);
