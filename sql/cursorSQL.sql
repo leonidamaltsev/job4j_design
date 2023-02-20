@@ -39,8 +39,7 @@ MOVE BACKWARD 4 FROM cursor_products;
 FETCH PRIOR FROM cursor_products;
 
 -- перемещение на 7-ю запись в таблице;
-MOVE BACKWARD 6 FROM cursor_products;
-FETCH PRIOR FROM cursor_products;
+MOVE BACKWARD 7 FROM cursor_products;
 FETCH PRIOR FROM cursor_products;
 
 -- перемещение на 2-ю запись в таблице;
