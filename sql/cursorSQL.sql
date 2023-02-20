@@ -48,3 +48,7 @@ FETCH PRIOR FROM cursor_products;
 
 -- перемещение на 1-ю запись в таблице;
 FETCH PRIOR FROM cursor_products;
+
+CLOSE cursor_products;
+
+COMMIT;
