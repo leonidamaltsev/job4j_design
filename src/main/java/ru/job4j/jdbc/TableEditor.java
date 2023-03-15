@@ -16,7 +16,7 @@ public class TableEditor implements AutoCloseable {
         initConnection();
     }
 
-    private void loadProperties(String sql) {
+    private void statementSql(String sql) {
         try (Statement statement = connection.createStatement()) {
             statement.execute(sql);
         } catch (SQLException e) {
@@ -33,32 +33,34 @@ public class TableEditor implements AutoCloseable {
     }
 
     public void createTable(String tableName) {
-        loadProperties("create table if not exists " + tableName + "();");
+       String sql = String.format("CREATE TABLE IF NOT EXISTS %s();", tableName);
+        statementSql(sql);
     }
 
     public void dropTable(String tableName) {
-        loadProperties("drop table " + tableName);
+        String sql = String.format("DROP TABLE %s;", tableName);
+        statementSql(sql);
     }
 
     public void addColumn(String tableName, String columnName, String type) {
-        var sql = (String.format(
+        String sql = (String.format(
                 "ALTER TABLE %s ADD COLUMN %s %s", tableName, columnName, type
         ));
-        loadProperties(sql);
+        statementSql(sql);
     }
 
     public void dropColumn(String tableName, String columnName) {
-        var sql = (String.format(
+        String sql = (String.format(
                 "ALTER TABLE %s DROP COLUMN %s", tableName, columnName
         ));
-        loadProperties(sql);
+        statementSql(sql);
     }
 
     public void renameColumn(String tableName, String columnName, String newColumnName) {
-        var sql = (String.format(
+        String sql = (String.format(
                 "ALTER TABLE %s RENAME COLUMN %s TO %s", tableName, columnName, newColumnName
         ));
-        loadProperties(sql);
+        statementSql(sql);
     }
 
     public String getTableScheme(String tableName) throws Exception {
