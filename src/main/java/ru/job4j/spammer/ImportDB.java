@@ -1,9 +1,6 @@
 package ru.job4j.spammer;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -25,8 +22,14 @@ public class ImportDB {
     public List<User> load() throws IOException {
         List<User> users = new ArrayList<>();
         try (BufferedReader rd = new BufferedReader(new FileReader(dump))) {
-            rd.lines().forEach(line -> users.add(new User(
-                    line.split(";")[0], line.split(";")[1])));
+            rd.lines().forEach(line -> {
+                String[] array = line.split(";");
+                if (array.length != 2 || array[0].isEmpty() || array[1].isEmpty()) {
+                    throw new IllegalArgumentException("Неверный формат строки");
+                }
+                User user = new User(array[0], array[1]);
+                users.add(user);
+            });
         }
         return users;
     }
