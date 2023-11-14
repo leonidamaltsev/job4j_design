@@ -10,10 +10,8 @@ public abstract class AbstractCache<K, V> {
     private final Map<K, SoftReference<V>> cache = new HashMap<>();
 
     public final void put(K key, V value) {
-        if (!cache.containsKey(key) || cache.get(key).get() == null) {
-            SoftReference<V> softReference = new SoftReference<>(value);
-            cache.put(key, softReference);
-        }
+        SoftReference<V> softReference = new SoftReference<>(value);
+        cache.put(key, softReference);
     }
 
     public final V get(K key) throws IOException {
